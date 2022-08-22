@@ -100,7 +100,7 @@ app.get("/", (req, res) => {
 
 app.get("/portamallorquina", async (req, res) => {
   let result = await porta.getPortaLinks();
-  let result2 = await porta.getDetalles(result);
+  let result2 = await porta.getPortaDetalles(result);
   res.send(JSON.stringify(result2));
 }); //index
 

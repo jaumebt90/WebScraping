@@ -35,7 +35,7 @@ async function getPortaLinks() {
 }
 
 //Input es un array de URL's
-async function getDetalles(input) {
+async function getPortaDetalles(input) {
   console.log("input", input);
   let arrayResult = [];
   for (let i = 0; i < input.length; i++) {
@@ -64,4 +64,4 @@ async function getDetalles(input) {
   return arrayResult;
 }
 
-module.exports = { getPortaLinks, getDetalles };
+module.exports = { getPortaLinks, getPortaDetalles };
