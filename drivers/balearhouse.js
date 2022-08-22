@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 
-async function getPortaLinks() {
-  let url = "https://www.porta-mallorquina.es/inmobiliaria/buscar-preis_desc/";
+async function getBalearLinks() {
+  let url = "https://www.balearhouse.com/es/comprar/inmuebles/mallorca?page=";
   let i;
   let arrayResult = [];
-  for (i = 1; i <= 25; i++) {
+  for (i = 1; i <= 8; i++) {
     let urlFinal = url + i;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
@@ -16,13 +16,14 @@ async function getPortaLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".titel a");
+      const elements = document.querySelectorAll(".slick-list draggable");
       const links = [];
       for (let element of elements) {
         links.push(element.href);
       }
       return links;
     });
+    console.log (enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
@@ -35,7 +36,7 @@ async function getPortaLinks() {
 }
 
 //Input es un array de URL's
-async function getPortaDetalles(input) {
+async function getBalearDetalles(input) {
   console.log("input", input);
   let arrayResult = [];
   for (let i = 0; i < input.length; i++) {
@@ -83,4 +84,4 @@ sourceurl
 source
 */
 
-module.exports = { getPortaLinks, getPortaDetalles };
+module.exports = { getBalearLinks, getBalearDetalles };

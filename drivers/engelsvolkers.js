@@ -66,4 +66,23 @@ async function getEngelsDetalles(input) {
   return arrayResult;
 }
 
+/*
+Zone
+Name/Title
+Price
+Location
+Rooms
+Bathrooms
+Builtsize
+Landsize
+Pool
+Seaview
+Referencenumber
+PhotosArray
+GPSlocation
+url
+sourceurl
+source
+*/
+
 module.exports = { getEngelsLinks, getEngelsDetalles };

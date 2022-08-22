@@ -7,8 +7,31 @@ const express = require("express");
 //const schedule = require("node-schedule");
 //const axios = require("axios");
 var cors = require("cors");
-const porta = require("./drivers/portaMallorquina");
+
+
+const balearhouse = require("./drivers/balearhouse");
 const engels = require("./drivers/engelsVolkers");
+const johntaylor = require("./drivers/johntaylor");
+const firstmallorca = require("./drivers/firstMallorca");
+const kensington = require("./drivers/kensington");
+const lavin = require("./drivers/lavin");
+const luciehauri = require("./drivers/luciehauri");
+const mallorcagold = require("./drivers/mallorcagold");
+const mallorcaresidencia = require("./drivers/mallorcaresidencia");
+const mallorcasite = require("./drivers/mallorcasite");
+const martinburri = require("./drivers/martinburri");
+const minker = require("./drivers/minker");
+const novamallorca = require("./drivers/novamallorca");
+const olivermateu = require("./drivers/olivermateu");
+const onlymallorca = require("./drivers/onlymallorca");
+const palmer = require("./drivers/palmer");
+const porta = require("./drivers/portaMallorquina");
+const pollentiaproperties = require("./drivers/pollentiaproperties");
+const sandberg = require("./drivers/sandberg");
+const privateproperty = require("./drivers/privateproperty");
+const sothebysrealty = require("./drivers/sothebysrealty");
+
+
 
 
 //console.log(typeof getPortaLinks, getPortaLinks);
@@ -98,17 +121,136 @@ app.get("/", (req, res) => {
   res.send("Backend app is online and working!");
 }); //index
 
-app.get("/portamallorquina", async (req, res) => {
-  let result = await porta.getPortaLinks();
-  let result2 = await porta.getPortaDetalles(result);
+app.get("/balearhouse", async (req, res) => {
+  let result = await balearhouse .getBalearLinks();
+  let result2 = await balearhouse .getBalearDetalles(result);
   res.send(JSON.stringify(result2));
 }); //index
 
-app.get("/engelsvolkers", async (req, res) => {
-  let result = await engels.getEngelsLinks();
-  let result2 = await engels.getEngelsDetalles(result);
+app.get("/engelsVolkers", async (req, res) => {
+  let result = await engels .getEngelsLinks();
+  let result2 = await engels .getEngelsDetalles(result);
   res.send(JSON.stringify(result2));
 }); //index
+
+app.get("/johntaylor", async (req, res) => {
+  let result = await johntaylor .getJohnLinks();
+  let result2 = await johntaylor .getJohnDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/firstMallorca", async (req, res) => {
+  let result = await firstmallorca .getFirstLinks();
+  let result2 = await firstmallorca .getFirstDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/kensington", async (req, res) => {
+  let result = await kensington .getKensingtonLinks();
+  let result2 = await kensington .getKensingtonDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/lavin", async (req, res) => {
+  let result = await lavin .getLavinLinks();
+  let result2 = await lavin .getLavinDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/luciehauri", async (req, res) => {
+  let result = await luciehauri .getLucieLinks();
+  let result2 = await luciehauri .getLucieDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/mallorcagold", async (req, res) => {
+  let result = await mallorcagold .getGoldLinks();
+  let result2 = await mallorcagold .getGoldDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/mallorcaresidencia", async (req, res) => {
+  let result = await mallorcaresidencia .getResidenciaLinks();
+  let result2 = await mallorcaresidencia .getResidenciaDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/mallorcasite", async (req, res) => {
+  let result = await mallorcasite .getSiteLinks();
+  let result2 = await mallorcasite .getSiteDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/martinburri", async (req, res) => {
+  let result = await martinburri .getMartinLinks();
+  let result2 = await martinburri .getMartinDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/minker", async (req, res) => {
+  let result = await minker .getMinkerLinks();
+  let result2 = await minker .getMinkerDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/novamallorca", async (req, res) => {
+  let result = await novamallorca .getNovaLinks();
+  let result2 = await novamallorca .getNovaDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/olivermateu", async (req, res) => {
+  let result = await olivermateu .getOliverLinks();
+  let result2 = await olivermateu .getOliverDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/onlymallorca", async (req, res) => {
+  let result = await onlymallorca .getOnlyLinks();
+  let result2 = await onlymallorca .getOnlyDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/palmer", async (req, res) => {
+  let result = await palmer .getPalmerLinks();
+  let result2 = await palmer .getPalmerDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/portaMallorquina", async (req, res) => {
+  let result = await porta .getPortaLinks();
+  let result2 = await porta .getPortaDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/sandberg", async (req, res) => {
+  let result = await sandberg .getSandbergLinks();
+  let result2 = await sandberg .getSandbergDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/privateproperty", async (req, res) => {
+  let result = await privateproperty .getPrivateLinks();
+  let result2 = await privateproperty .getPrivateDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/sothebysrealty", async (req, res) => {
+  let result = await sothebysrealty .getSotherbysLinks();
+  let result2 = await sothebysrealty .getSotherbysDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/pollentiaproperties", async (req, res) => {
+  let result = await pollentiaproperties.getPollentiaLinks();
+  let result2 = await pollentiaproperties.getPollentiaDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+
+
+
+
 
 const port = process.env.PORT || 3000;
 
