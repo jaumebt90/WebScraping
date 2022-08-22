@@ -8,6 +8,9 @@ const express = require("express");
 //const axios = require("axios");
 var cors = require("cors");
 const porta = require("./drivers/portaMallorquina");
+const engels = require("./drivers/engelsVolkers");
+
+
 //console.log(typeof getPortaLinks, getPortaLinks);
 // Routers imports
 //var user = require("./routes/user");
@@ -98,6 +101,12 @@ app.get("/", (req, res) => {
 app.get("/portamallorquina", async (req, res) => {
   let result = await porta.getPortaLinks();
   let result2 = await porta.getDetalles(result);
+  res.send(JSON.stringify(result2));
+}); //index
+
+app.get("/engelsvolkers", async (req, res) => {
+  let result = await engels.getEngelsLinks();
+  let result2 = await engels.getEngelsDetalles(result);
   res.send(JSON.stringify(result2));
 }); //index
 
