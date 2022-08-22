@@ -64,4 +64,22 @@ async function getPortaDetalles(input) {
   return arrayResult;
 }
 
+/*
+Name
+Price
+Location
+Rooms
+Bathrooms
+Builtsize
+Landsize
+Pool
+Seaview
+Referencenumber
+PhotosArray
+GPSlocation
+url
+sourceurl
+source
+*/
+
 module.exports = { getPortaLinks, getPortaDetalles };
