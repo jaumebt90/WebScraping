@@ -1,11 +1,32 @@
 {
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.1",
-    "puppeteer": "^16.2.0"
+    "fs": "^0.0.1-security",
+    "json2csv": "^5.0.7",
+    "Parser": "^0.0.1",
+    "puppeteer": "^16.2.0",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.6"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node app.js",
     "develop": "nodemon index.js"
-  }
+  },
+  "name": "webscraping",
+  "description": "",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaumebt90/WebScraping.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaumebt90/WebScraping/issues"
+  },
+  "homepage": "https://github.com/jaumebt90/WebScraping#readme"
 }

@@ -16,7 +16,7 @@ async function getBalearLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".slick-list draggable");
+      const elements = document.querySelectorAll('div[class="slick-slide slick-current slick-active"]');
       const links = [];
       for (let element of elements) {
         links.push(element.href);
@@ -83,5 +83,6 @@ url
 sourceurl
 source
 */
+
 
 module.exports = { getBalearLinks, getBalearDetalles };
