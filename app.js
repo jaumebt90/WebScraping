@@ -89,6 +89,8 @@ let cleanempresasArray = [];
       response = await requestPromise(url);
       $ = await cheerio.load(response);
 
+//Pendiente añadir un timeout para esta página
+
       let Zone = $('div[class="o-layout__item u-2/3@l"] > p[class="u-uppercase"]').text();
       let Title = $("h1").text();
       let features = $('div[class="c-property-features c-property-features--inner u-flex u-mrb-m u-pdb-m"] > div[class="u-mrr-dxl@m u-mrb-none@m u-mrb-s"] > p[class="c-property-features__big u-color-secondary"]').text();  
