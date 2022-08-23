@@ -1,37 +1,38 @@
 const puppeteer = require("puppeteer");
 
 async function getFirstLinks() {
-  let url = "https://www.firstmallorca.com/en/search/";
-  let i;
+  /* let url = "https://es.mallorcaresidencia.com/buscar/?textsearch=&type=-&area=-&loc=-&br=-&p1=-&p2=-&order=date%3Bdesc&pageno=1#234"; */
+  //let i;
   let arrayResult = [];
-  for (i = 1; i <= 55; i++) {
-    let urlFinal = url + i;
-    console.log("Trabajando para obtener la url desde: " + urlFinal);
+  // for (i = 1; i <= 55; i++) {
+  let urlFinal =
+    "https://es.mallorcaresidencia.com/buscar/?textsearch=&type=-&area=-&loc=-&br=-&p1=-&p2=-&order=date%3Bdesc&pageno=1#234";
+  console.log("Trabajando para obtener la url desde: " + urlFinal);
 
-    //console.log(urlFinal);
-    const browser = await puppeteer.launch({ headless: true });
-    const page = await browser.newPage();
-    await page.goto(urlFinal);
+  //console.log(urlFinal);
+  const browser = await puppeteer.launch({ headless: true });
+  const page = await browser.newPage();
+  await page.goto(urlFinal);
 
-    //await page.screenshot({ path: "prueba.jpg" });
+  //await page.screenshot({ path: "prueba.jpg" });
 
-    const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".slider-slides");
-      const links = [];
-      for (let element of elements) {
-        links.push(element.href);
-      }
-      return links;
-    });
-    console.log (enlaces);
-    for (let i = 0; i < enlaces.length; i++) {
-      arrayResult.push(enlaces[i]);
+  const enlaces = await page.evaluate(() => {
+    const elements = document.querySelectorAll("#property-search-results a");
+    const links = [];
+    for (let element of elements) {
+      links.push(element.href);
     }
-
-    //console.log(enlaces.length);
-
-    await browser.close();
+    return links;
+  });
+  console.log(enlaces);
+  for (let i = 0; i < enlaces.length; i++) {
+    arrayResult.push(enlaces[i]);
   }
+
+  //console.log(enlaces.length);
+
+  await browser.close();
+
   return arrayResult;
 }
 
@@ -50,7 +51,7 @@ async function getFirstDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll(".entry-content");
       const links = [];
       for (let element of elements) {
         links.push(element.href);

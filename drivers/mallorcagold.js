@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 
 async function getFirstLinks() {
-  let url = "https://www.firstmallorca.com/en/search/";
+  let url = "";
   let i;
   let arrayResult = [];
-  for (i = 1; i <= 55; i++) {
+  for (i = 1; i <= 33; i++) {
     let urlFinal = url + i;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
@@ -23,7 +23,7 @@ async function getFirstLinks() {
       }
       return links;
     });
-    console.log (enlaces);
+    console.log(enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
