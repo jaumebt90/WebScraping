@@ -12,7 +12,7 @@
     "request-promise": "^4.2.6"
   },
   "scripts": {
-    "start": "node app.js",
+    "start": "node index.js",
     "develop": "nodemon index.js"
   },
   "name": "webscraping",

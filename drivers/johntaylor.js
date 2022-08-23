@@ -1,11 +1,12 @@
 const puppeteer = require("puppeteer");
 
 async function getFirstLinks() {
-  let url = "https://www.firstmallorca.com/en/search/";
+  let url1 = "https://www.john-taylor.es/espana/venta/mallorca/";
   let i;
+  let url2 = "/";
   let arrayResult = [];
-  for (i = 1; i <= 55; i++) {
-    let urlFinal = url + i;
+  for (i = 1; i <= 10; i++) {
+    let urlFinal = url1 + i + url2;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
     //console.log(urlFinal);
@@ -23,7 +24,7 @@ async function getFirstLinks() {
       }
       return links;
     });
-    console.log (enlaces);
+    console.log(enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }

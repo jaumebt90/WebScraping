@@ -4,7 +4,7 @@ async function getBalearLinks() {
   let url = "https://www.balearhouse.com/es/comprar/inmuebles/mallorca?page=";
   let i;
   let arrayResult = [];
-  for (i = 1; i <= 8; i++) {
+  for (i = 1; i <= 21; i++) {
     let urlFinal = url + i;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
@@ -16,14 +16,16 @@ async function getBalearLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll('div[class="slick-slide slick-current slick-active"]');
+      const elements = document.querySelectorAll(
+        ".c-card__content u-bg-color-grey u-pdh-ds u-pdt-m u-pdb-dm a"
+      );
       const links = [];
       for (let element of elements) {
         links.push(element.href);
       }
       return links;
     });
-    console.log (enlaces);
+    console.log(enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
@@ -50,7 +52,7 @@ async function getBalearDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll(".o-layout__item u-2/3@l");
       const links = [];
       for (let element of elements) {
         links.push(element.href);
@@ -83,6 +85,5 @@ url
 sourceurl
 source
 */
-
 
 module.exports = { getBalearLinks, getBalearDetalles };

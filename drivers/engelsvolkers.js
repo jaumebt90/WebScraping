@@ -1,11 +1,12 @@
 const puppeteer = require("puppeteer");
 
 async function getEngelsLinks() {
-  let url1 = "https://www.engelvoelkers.com/en/search/?q=&startIndex="
-  let url2 = "&businessArea=residential&sortOrder=DESC&sortField=sortPrice&pageSize=18&facets=bsnssr%3Aresidential%3Bcntry%3Aspain%3Brgn%3Amajorca%3Btyp%3Abuy%3B";
+  let url1 = "https://www.engelvoelkers.com/en/search/?q=&startIndex=";
+  let url2 =
+    "&businessArea=residential&sortOrder=DESC&sortField=sortPrice&pageSize=18&facets=bsnssr%3Aresidential%3Bcntry%3Aspain%3Brgn%3Amajorca%3Btyp%3Abuy%3B";
   let i;
   let arrayResult = [];
-  for (i = 1; i <= 2000; i+=15) {
+  for (i = 1; i <= 2000; i += 15) {
     let urlFinal = url1 + i + url2;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
@@ -17,14 +18,16 @@ async function getEngelsLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".ev-property-container");
+      const elements = document.querySelectorAll(
+        ".border border-whiter propertyItem a"
+      );
       const links = [];
       for (let element of elements) {
         links.push(element.href);
       }
       return links;
     });
-    console.log (enlaces);
+    //console.log (enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
@@ -51,7 +54,7 @@ async function getEngelsDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll(".container section");
       const links = [];
       for (let element of elements) {
         links.push(element.href);
