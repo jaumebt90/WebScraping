@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 
 async function getPalmerLinks() {
-  let url = "https://www.firstmallorca.com/en/search/";
+  let url = "https://palmerinmobiliaria.com/es/comprar/vivienda/mallorca?page=";
   let i;
   let arrayResult = [];
-  for (i = 1; i <= 55; i++) {
+  for (i = 1; i <= 40; i++) {
     let urlFinal = url + i;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
@@ -16,14 +16,16 @@ async function getPalmerLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".slider-slides");
+      const elements = document.querySelectorAll(
+        ".o-layout o-layout--gutter-xs u-flex a"
+      );
       const links = [];
       for (let element of elements) {
         links.push(element.href);
       }
       return links;
     });
-    console.log (enlaces);
+    console.log(enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
@@ -50,7 +52,9 @@ async function getPalmerDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll(
+        ".c-follow-cta__wrapper c-order-property u-flex u-flex-column"
+      );
       const links = [];
       for (let element of elements) {
         links.push(element.href);

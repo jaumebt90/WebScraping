@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 
 async function getNovaLinks() {
-  let url = "https://www.firstmallorca.com/en/search/";
+  let url = "https://www.bhhsmallorca.com/en/properties?page=";
   let i;
   let arrayResult = [];
-  for (i = 1; i <= 55; i++) {
+  for (i = 1; i <= 45; i++) {
     let urlFinal = url + i;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
@@ -16,14 +16,14 @@ async function getNovaLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".slider-slides");
+      const elements = document.querySelectorAll(".ic-hiliteIMG a");
       const links = [];
       for (let element of elements) {
         links.push(element.href);
       }
       return links;
     });
-    console.log (enlaces);
+    console.log(enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
@@ -50,7 +50,7 @@ async function getNovaDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll("#ic-detContent");
       const links = [];
       for (let element of elements) {
         links.push(element.href);

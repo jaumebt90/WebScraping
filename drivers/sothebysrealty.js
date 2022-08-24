@@ -1,11 +1,12 @@
 const puppeteer = require("puppeteer");
 
 async function getFirstLinks() {
-  let url = "https://www.firstmallorca.com/en/search/";
+  let url = "https://www.sothebysrealty.com/spa/venta/ml-esp/";
   let i;
+  let url2 = "-pagina";
   let arrayResult = [];
-  for (i = 1; i <= 55; i++) {
-    let urlFinal = url + i;
+  for (i = 1; i <= 5; i++) {
+    let urlFinal = url + i + url2;
     console.log("Trabajando para obtener la url desde: " + urlFinal);
 
     //console.log(urlFinal);
@@ -16,14 +17,16 @@ async function getFirstLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".slider-slides");
+      const elements = document.querySelectorAll(
+        ".Results-card__container Results-card__container--map a"
+      );
       const links = [];
       for (let element of elements) {
         links.push(element.href);
       }
       return links;
     });
-    console.log (enlaces);
+    console.log(enlaces);
     for (let i = 0; i < enlaces.length; i++) {
       arrayResult.push(enlaces[i]);
     }
@@ -50,7 +53,7 @@ async function getFirstDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll(".ListingHero");
       const links = [];
       for (let element of elements) {
         links.push(element.href);
