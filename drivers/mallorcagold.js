@@ -16,7 +16,9 @@ async function getFirstLinks() {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll(".slider-slides");
+      const elements = document.querySelectorAll(
+        ".slick-slide slick-current slick-center a"
+      );
       const links = [];
       for (let element of elements) {
         links.push(element.href);
@@ -50,7 +52,7 @@ async function getFirstDetalles(input) {
     //await page.screenshot({ path: "prueba.jpg" });
 
     const enlaces = await page.evaluate(() => {
-      const elements = document.querySelectorAll("beschreibungstext");
+      const elements = document.querySelectorAll(".col-lg-8");
       const links = [];
       for (let element of elements) {
         links.push(element.href);
