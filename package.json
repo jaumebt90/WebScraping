@@ -18,7 +18,7 @@
   "name": "webscraping",
   "description": "",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jaumebt90/WebScraping.git"
