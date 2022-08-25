@@ -2,13 +2,16 @@
 ///////// CONFIGS ////////////////////////////
 //////////////////////////////////////////////
 
-// Dependencies
+//DEPENDENCIES
 const express = require("express");
 //const schedule = require("node-schedule");
 //const axios = require("axios");
 var cors = require("cors");
+const { initializeApp, cert } = require("firebase-admin/app");
+const { getAuth } = require("firebase-admin/auth");
+const { getFirestore } = require("firebase-admin/firestore");
 
-
+//SCRAPPING DRIVERS
 const balearhouse = require("./drivers/balearhouse");
 const engels = require("./drivers/engelsVolkers");
 const johntaylor = require("./drivers/johntaylor");
@@ -31,8 +34,19 @@ const sandberg = require("./drivers/sandberg");
 const privateproperty = require("./drivers/privateproperty");
 const sothebysrealty = require("./drivers/sothebysrealty");
 
+//FIREBASE ADMIN OBJECTS
+const admin0 = initializeApp({
+  credential: cert(JSON.parse(process.env.DEVELOP)),
+  databaseURL: "https://developstudio.firebaseio.com",
+});
 
-
+const admin1 = initializeApp(
+  {
+    credential: cert(JSON.parse(process.env.POLLENTIA)),
+    databaseURL: "https://videocreator-fee3d.firebaseio.com",
+  },
+  "POLLENTIA"
+);
 
 //console.log(typeof getPortaLinks, getPortaLinks);
 // Routers imports
@@ -41,7 +55,8 @@ const sothebysrealty = require("./drivers/sothebysrealty");
 //var typeform = require("./routes/typeform");
 
 // Middlewares code
-/* var retriveFirebaseAdmin = async function (req, res, next) {
+
+var retriveFirebaseAdmin = async function (req, res, next) {
   let admin = adminSelector(req.originalUrl.split("/")[1]);
   if (typeof admin !== "undefined") {
     req.adminObj = admin;
@@ -82,7 +97,7 @@ var securityTokenCheck = function (req, res, next) {
     .catch((error) => {
       res.status(401).send("Unauthorized");
     });
-};*/
+};
 
 //////////////////////////////////////////////
 ///////// SCHEDULER //////////////////////////
@@ -249,24 +264,27 @@ app.get("/pollentiaproperties", async (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-// Firebase
+Firebase
 
-/*const { initializeApp, cert } = require("firebase-admin/app");
-const { getAuth } = require("firebase-admin/auth");
-const { getFirestore } = require("firebase-admin/firestore");
-const admin0 = initializeApp({
-  credential: cert(JSON.parse(process.env.DEVELOP)),
-  databaseURL: "https://developstudio.firebaseio.com",
-});
 
-const admin1 = initializeApp(
-  {
-    credential: cert(JSON.parse(process.env.FONTSANA)),
 
-    databaseURL: "https://fontsana-3037b.firebaseio.com",
-  },
-  "FONTSANA"
-);*/
+const adminSelector = (subdomain) => {
+  switch (subdomain) {
+
+    case 'tu': case 'localhost:3000': case 'develop':
+      console.log("develop DB");
+      return admin0;
+
+    case 'pollentia':
+      console.log("pollentia DB");
+      return admin1;
+    
+    default:
+      console.log("Undefined DB");
+      return undefined;
+
+  }
+}
 
 //////////////////////////////////////////////
 ///////// SERVER START ///////////////////////
