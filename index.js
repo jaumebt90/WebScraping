@@ -247,11 +247,6 @@ app.get("/pollentiaproperties", async (req, res) => {
   res.send(JSON.stringify(result2));
 }); //index
 
-
-
-
-
-
 const port = process.env.PORT || 3000;
 
 // Firebase
